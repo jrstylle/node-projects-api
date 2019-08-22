@@ -1,4 +1,4 @@
-# Nodejs API Concepts
+# Nodejs Projects API
 
 ### Installation
 
@@ -9,7 +9,7 @@ First of all, install the dependencies to run this boilerplate.
 
 ```sh
 # Clone this repository
-$ git clone https://github.com/jrstylle/node-api-concepts.git
+$ git clone https://github.com/jrstylle/node-projects-api.git
 
 # install dependencies
 $ yarn install

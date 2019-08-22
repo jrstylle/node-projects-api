@@ -1,5 +1,5 @@
 {
-  "name": "node-api-concepts",
+  "name": "node-projects-api",
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.1"
