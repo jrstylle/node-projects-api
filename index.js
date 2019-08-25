@@ -1,9 +1,21 @@
 const express = require("express");
 const server = express();
 
-server.use(express.json());
+const projects = [];
+let amountOfRequestMade = 0;
 
-let projects = [];
+// Middlewares
+function requestLog(request, response, next) {
+  let currentRequest = ++amountOfRequestMade;
+  let dateTime = new Date();
+  let requestTime = `${dateTime.getHours()}:${dateTime.getMinutes()}:${dateTime.getSeconds()}`;
+  console.log(`Amount of requests: ${currentRequest} - time: ${requestTime}`);
+
+  return next();
+}
+
+server.use(express.json());
+server.use(requestLog);
 
 // Routes
 server.get("/projects", (request, response) => {
