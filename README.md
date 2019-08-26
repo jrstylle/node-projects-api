@@ -2,7 +2,7 @@
 
 ### Installation
 
-First of all, install the dependencies to run this boilerplate.
+First of all, install the dependencies to run this project.
 
 - [NodeJS](http://nodejs.org/)
 - [Yarn](https://yarnpkg.com/en/)
@@ -18,4 +18,4 @@ $ yarn install
 
 ### Tasks
 
-- `npm start`: run the humble server created with help from express
+- `npm dev`: run the humble server created with help from express
