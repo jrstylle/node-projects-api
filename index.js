@@ -13,6 +13,16 @@ function requestLog(request, response, next) {
 
   return next();
 }
+function checkProjectId(request, response, next) {
+  const { id } = request.params;
+  const project = projects.find(project => {
+    project.id == id;
+  });
+  if (!project) {
+    return response.status(404).json({ error: "Project not found" });
+  }
+  return next();
+}
 
 server.use(express.json());
 server.use(requestLog);
@@ -32,7 +42,7 @@ server.post("/projects", (request, response) => {
   return response.json(projects);
 });
 
-server.put("/projects/:id", (request, response) => {
+server.put("/projects/:id", checkProjectId, (request, response) => {
   const { id } = request.params;
   const { title } = request.body;
   project = projects.find(project => {
@@ -42,7 +52,7 @@ server.put("/projects/:id", (request, response) => {
   return response.json(projects);
 });
 
-server.delete("/projects/:id", (request, response) => {
+server.delete("/projects/:id", checkProjectId, (request, response) => {
   const { id } = request.params;
   const indexProject = projects.findIndex(project => {
     return project.id == id;
@@ -51,7 +61,7 @@ server.delete("/projects/:id", (request, response) => {
   return response.send();
 });
 
-server.post("/projects/:id/tasks", (request, response) => {
+server.post("/projects/:id/tasks", checkProjectId, (request, response) => {
   const { id } = request.params;
   const { title } = request.body;
   const project = projects.find(project => {
